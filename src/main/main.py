@@ -15,7 +15,13 @@ class Main:
 
     def update(self):
         self.snek.move_snek()
+        self.check_collision()
 
     def draw_elements(self):
         self.snek.draw_snek()
         self.fruit.draw_fruit()
+
+    def check_collision(self):
+        if self.fruit.pos == self.snek.body[0]:
+            self.fruit.randomize_position()
+            self.snek.add_body_block()

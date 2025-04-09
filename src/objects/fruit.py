@@ -17,3 +17,6 @@ class Fruit:
     def draw_fruit(self):
         fruit_rectangle = pygame.Rect(self.pos.x * self.cell_size, self.pos.y * self.cell_size, self.cell_size, self.cell_size)
         pygame.draw.rect(self.screen, (90,255,100), fruit_rectangle)
+
+    def randomize_position(self):
+        self.__init__(self.cell_size, self.cell_number, self.screen)
