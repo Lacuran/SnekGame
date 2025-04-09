@@ -17,22 +17,24 @@ main_game = Main(cell_size, cell_number, screen)
 while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
-            pygame.quit()
-            sys.exit()
+            main_game.game_over()
         if event.type == SCREEN_UPDATE:
             main_game.update()
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_UP:
-                main_game.snek.direction = Vector2(0, -1)
+                if main_game.snek.direction.y != 1:
+                    main_game.snek.direction = Vector2(0, -1)
             if event.key == pygame.K_DOWN:
-                main_game.snek.direction = Vector2(0, 1)
+                if main_game.snek.direction.y != -1:
+                    main_game.snek.direction = Vector2(0, 1)
             if event.key == pygame.K_RIGHT:
-                main_game.snek.direction = Vector2(1, 0)
+                if main_game.snek.direction.x != -1:
+                    main_game.snek.direction = Vector2(1, 0)
             if event.key == pygame.K_LEFT:
-                main_game.snek.direction = Vector2(-1, 0)
+                if main_game.snek.direction.x != 1:
+                    main_game.snek.direction = Vector2(-1, 0)
             if event.key == pygame.K_ESCAPE:
-                pygame.quit()
-                sys.exit()
+                main_game.game_over()
 
 
     screen.fill((210,180,50))
