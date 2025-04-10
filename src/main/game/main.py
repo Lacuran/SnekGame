@@ -2,17 +2,16 @@ import sys
 
 import pygame
 
+from src.main.base.base_setting_class import BaseSettingsClass
 from src.objects.fruit import Fruit
 from src.objects.snek import Snek
 
-class Main:
+class Main(BaseSettingsClass):
+    def __init__(self):
+        super().__init__()
+        self.snek = Snek()
+        self.fruit = Fruit()
 
-    def __init__(self, cell_size, cell_number, screen):
-        self.snek = Snek(cell_size, cell_number, screen)
-        self.fruit = Fruit(cell_size, cell_number, screen)
-        self.cell_size = cell_size
-        self.cell_number = cell_number
-        self.screen = screen
 
     def update(self):
         self.snek.move_snek()

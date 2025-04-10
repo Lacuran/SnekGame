@@ -2,16 +2,15 @@ import pygame
 from pygame.math import Vector2
 from random import randint
 
+from src.main.base.base_setting_class import BaseSettingsClass
 
 
-class Fruit:
-    def __init__(self, cell_size, cell_number, screen):
-        self.position_x = randint(0, cell_number - 1)
-        self.position_y = randint(0, cell_number - 1)
+class Fruit(BaseSettingsClass):
+    def __init__(self):
+        super().__init__()
+        self.position_x = randint(0, self.cell_number - 1)
+        self.position_y = randint(0, self.cell_number - 1)
         self.pos = Vector2(self.position_x, self.position_y)
-        self.cell_size = cell_size
-        self.cell_number = cell_number
-        self.screen = screen
 
 
     def draw_fruit(self):
@@ -19,4 +18,4 @@ class Fruit:
         pygame.draw.rect(self.screen, (90,255,100), fruit_rectangle)
 
     def randomize_position(self):
-        self.__init__(self.cell_size, self.cell_number, self.screen)
+        self.__init__()

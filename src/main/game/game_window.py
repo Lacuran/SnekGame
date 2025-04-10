@@ -1,19 +1,14 @@
-import sys
-
 import pygame
 from pygame import Vector2
 
-from src.main.main import Main
+from src.main.game.main import Main
+
 
 pygame.init()
-cell_size = 40
-cell_number = 20
-screen = pygame.display.set_mode((cell_number * cell_size, cell_number * cell_size))
-clock = pygame.time.Clock()
-
+main_game = Main()
 SCREEN_UPDATE = pygame.USEREVENT
 pygame.time.set_timer(SCREEN_UPDATE, 150)
-main_game = Main(cell_size, cell_number, screen)
+
 while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -37,7 +32,7 @@ while True:
                 main_game.game_over()
 
 
-    screen.fill((210,180,50))
+    main_game.screen.fill((210,180,50))
     main_game.draw_elements()
     pygame.display.update()
-    clock.tick(60)
+    main_game.clock.tick(60)

@@ -1,15 +1,15 @@
 import pygame
 from pygame.math import Vector2
 
+from src.main.base.base_setting_class import BaseSettingsClass
 
-class Snek:
-    def __init__(self, cell_size, cell_number, screen):
+
+class Snek(BaseSettingsClass):
+    def __init__(self):
+        super().__init__()
         self.body = [Vector2(5, 10), Vector2(4, 10), Vector2(3, 10)]
         self.direction = Vector2(1,0)
         self.new_body_block = False
-        self.cell_size = cell_size
-        self.cell_number = cell_number
-        self.screen = screen
 
     def draw_snek(self):
         for block in self.body:
