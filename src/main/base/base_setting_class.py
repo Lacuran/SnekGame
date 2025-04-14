@@ -1,9 +1,11 @@
-from src.main.base.base_config import BaseConfig
+from src.main.base.base_assets_config import BaseAssetsConfig
+from src.main.base.base_window_config import BaseWindowConfig
 
 
 class BaseSettingsClass:
     def __init__(self):
-        self.screen = BaseConfig.SCREEN
-        self.cell_size = BaseConfig.CELL_SIZE
-        self.cell_number = BaseConfig.CELL_NUMBER
-        self.clock = BaseConfig.CLOCK
+        self.screen = BaseWindowConfig.SCREEN
+        self.cell_size = BaseWindowConfig.CELL_SIZE
+        self.cell_number = BaseWindowConfig.CELL_NUMBER
+        self.clock = BaseWindowConfig.CLOCK
+        self.apple = BaseAssetsConfig.APPLE

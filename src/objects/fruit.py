@@ -15,7 +15,7 @@ class Fruit(BaseSettingsClass):
 
     def draw_fruit(self):
         fruit_rectangle = pygame.Rect(self.pos.x * self.cell_size, self.pos.y * self.cell_size, self.cell_size, self.cell_size)
-        pygame.draw.rect(self.screen, (90,255,100), fruit_rectangle)
+        self.screen.blit(self.apple, fruit_rectangle)
 
     def randomize_position(self):
         self.__init__()
