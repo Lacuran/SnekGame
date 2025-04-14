@@ -12,11 +12,18 @@ class Snek(BaseSettingsClass):
         self.new_body_block = False
 
     def draw_snek(self):
-        for block in self.body:
+        for index, block in enumerate(self.body):
             x_position = block.x * self.cell_size
             y_position = block.y * self.cell_size
-            snek_rect = pygame.Rect(x_position, y_position, self.cell_size, self.cell_size)
-            pygame.draw.rect(self.screen,(255,50,255), snek_rect)
+            block_rect = pygame.Rect(x_position, y_position, self.cell_size, self.cell_size)
+
+            if index == 0:
+                self.screen.blit(self.snek_head_left, block_rect)
+            else:
+                pygame.draw
+
+
+
 
     def move_snek(self):
         if self.new_body_block:

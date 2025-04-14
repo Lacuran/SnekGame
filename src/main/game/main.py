@@ -1,10 +1,9 @@
 import sys
 
-import pygame
-
 from src.main.base.base_setting_class import BaseSettingsClass
 from src.objects.fruit import Fruit
 from src.objects.snek import Snek
+
 
 class Main(BaseSettingsClass):
     def __init__(self):
@@ -37,7 +36,7 @@ class Main(BaseSettingsClass):
 
     @staticmethod
     def game_over():
-        pygame.quit()
+        BaseSettingsClass.get_base_pygame().quit()
         sys.exit()
 
 

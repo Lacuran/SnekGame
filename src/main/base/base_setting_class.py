@@ -28,3 +28,11 @@ class BaseSettingsClass:
         self.snek_tail_down = BaseAssetsConfig.SNEK_TAIL_DOWN
         self.snek_tail_left = BaseAssetsConfig.SNEK_TAIL_LEFT
         self.snek_tail_right = BaseAssetsConfig.SNEK_TAIL_RIGHT
+
+    @staticmethod
+    def get_base_pygame():
+        return BaseWindowConfig.get_pygame()
+
+    @staticmethod
+    def get_base_sys():
+        return BaseWindowConfig.get_sys()
