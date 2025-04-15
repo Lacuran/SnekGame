@@ -26,9 +26,22 @@ class Snek(BaseSettingsClass):
                 self.screen.blit(self.head, block_rect)
             elif index == len(self.body) - 1:
                 self.screen.blit(self.tail, block_rect)
-
             else:
-                pygame.draw.rect(self.screen, (200,70,140), block_rect)
+                previous_block = self.body[index + 1] - block
+                next_block = self.body[index - 1] - block
+                if previous_block.x == next_block.x:
+                    self.screen.blit(self.snek_body_vertical, block_rect)
+                elif previous_block.y == next_block.y:
+                    self.screen.blit(self.snek_body_horizontal, block_rect)
+                else:
+                    if previous_block.x == -1 and next_block.y == -1 or previous_block.y == -1 and next_block.x == -1:
+                        self.screen.blit(self.snek_body_till_left, block_rect)
+                    elif previous_block.x == -1 and next_block.y == 1 or previous_block.y == 1 and next_block.x == -1:
+                        self.screen.blit(self.snek_body_bend_left, block_rect)
+                    elif previous_block.x == 1 and next_block.y == -1 or previous_block.y == -1 and next_block.x == 1:
+                        self.screen.blit(self.snek_body_till_right, block_rect)
+                    elif previous_block.x == 1 and next_block.y == 1 or previous_block.y == 1 and next_block.x == 1:
+                        self.screen.blit(self.snek_body_bend_right, block_rect)
 
 
     def move_snek(self):
@@ -53,8 +66,8 @@ class Snek(BaseSettingsClass):
         if head_relation == Vector2(0,-1): self.head = self.snek_head_down
 
     def update_tail_graphic(self):
-        tail_relation = self.body[0] - self.body[1]
-        if tail_relation == Vector2(-1, 0): self.tail = self.snek_tail_left
-        if tail_relation == Vector2(1, 0): self.tail = self.snek_tail_right
-        if tail_relation == Vector2(0, -1): self.tail = self.snek_tail_up
-        if tail_relation == Vector2(0, 1): self.tail = self.snek_tail_down
+        tail_relation = self.body[-2] - self.body[-1]
+        if tail_relation == Vector2(1, 0): self.tail = self.snek_tail_left
+        if tail_relation == Vector2(-1, 0): self.tail = self.snek_tail_right
+        if tail_relation == Vector2(0, 1): self.tail = self.snek_tail_up
+        if tail_relation == Vector2(0, -1): self.tail = self.snek_tail_down
