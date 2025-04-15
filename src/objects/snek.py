@@ -7,12 +7,15 @@ from src.main.base.base_setting_class import BaseSettingsClass
 class Snek(BaseSettingsClass):
     def __init__(self):
         super().__init__()
+        self.tail = None
+        self.head = None
         self.body = [Vector2(5, 10), Vector2(4, 10), Vector2(3, 10)]
         self.direction = Vector2(1,0)
         self.new_body_block = False
 
     def draw_snek(self):
-        self.update_snek_graphic()
+        self.update_head_graphic()
+        self.update_tail_graphic()
 
         for index, block in enumerate(self.body):
             x_position = block.x * self.cell_size
@@ -21,6 +24,9 @@ class Snek(BaseSettingsClass):
 
             if index == 0:
                 self.screen.blit(self.head, block_rect)
+            elif index == len(self.body) - 1:
+                self.screen.blit(self.tail, block_rect)
+
             else:
                 pygame.draw.rect(self.screen, (200,70,140), block_rect)
 
@@ -39,6 +45,16 @@ class Snek(BaseSettingsClass):
     def add_body_block(self):
         self.new_body_block = True
 
-    def update_snek_graphic(self):
+    def update_head_graphic(self):
         head_relation = self.body[1] - self.body[0]
-        if head_relation == Vector2(1,0): self.body = self.snek_head_right
+        if head_relation == Vector2(1,0): self.head = self.snek_head_left
+        if head_relation == Vector2(-1,0): self.head = self.snek_head_right
+        if head_relation == Vector2(0,1): self.head = self.snek_head_up
+        if head_relation == Vector2(0,-1): self.head = self.snek_head_down
+
+    def update_tail_graphic(self):
+        tail_relation = self.body[0] - self.body[1]
+        if tail_relation == Vector2(-1, 0): self.tail = self.snek_tail_left
+        if tail_relation == Vector2(1, 0): self.tail = self.snek_tail_right
+        if tail_relation == Vector2(0, -1): self.tail = self.snek_tail_up
+        if tail_relation == Vector2(0, 1): self.tail = self.snek_tail_down
