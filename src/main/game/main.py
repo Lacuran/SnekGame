@@ -1,5 +1,3 @@
-import sys
-
 from src.main.base.base_setting_class import BaseSettingsClass
 from src.objects.fruit import Fruit
 from src.objects.snek import Snek
@@ -18,6 +16,7 @@ class Main(BaseSettingsClass):
         self.check_for_failure()
 
     def draw_elements(self):
+        self.draw_grass()
         self.snek.draw_snek()
         self.fruit.draw_fruit()
 
@@ -34,9 +33,17 @@ class Main(BaseSettingsClass):
             if block == self.snek.body[0]:
                 self.game_over()
 
-    @staticmethod
-    def game_over():
-        BaseSettingsClass.get_base_pygame().quit()
-        sys.exit()
+    def draw_grass(self):
+        grass_color = (167, 209, 61)
+        for column in range(self.cell_number):
+            grass_rect = self.get_base_pygame().Rect(column * self.cell_size, 0 ,self.cell_size, self.cell_size)
+            self.get_base_pygame().draw.rect(self.screen, grass_color, grass_rect)
+
+
+    def game_over(self):
+        print("Game Over")
+        self.get_base_pygame().quit()
+        self.get_base_sys().exit()
+
 
 

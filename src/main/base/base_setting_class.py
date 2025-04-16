@@ -36,3 +36,7 @@ class BaseSettingsClass:
     @staticmethod
     def get_base_sys():
         return BaseWindowConfig.get_sys()
+
+    @staticmethod
+    def get_base_vector2():
+        return BaseWindowConfig.get_vector2()
