@@ -34,10 +34,18 @@ class Main(BaseSettingsClass):
                 self.game_over()
 
     def draw_grass(self):
-        grass_color = (167, 209, 61)
-        for column in range(self.cell_number):
-            grass_rect = self.get_base_pygame().Rect(column * self.cell_size, 0 ,self.cell_size, self.cell_size)
-            self.get_base_pygame().draw.rect(self.screen, grass_color, grass_rect)
+        grass_color = (167, 209, 67)
+        for row in range(self.cell_number):
+            if row % 2 == 0:
+                for col in range(self.cell_number):
+                    if col % 2 == 0:
+                        grass_rect = self.get_base_pygame().Rect(col * self.cell_size, row * self.cell_size, self.cell_size, self.cell_size)
+                        self.get_base_pygame().draw.rect(self.screen, grass_color, grass_rect)
+            else:
+                for col in range(self.cell_number):
+                    if col % 2 != 0:
+                        grass_rect = self.get_base_pygame().Rect(col * self.cell_size, row * self.cell_size, self.cell_size, self.cell_size)
+                        self.get_base_pygame().draw.rect(self.screen, grass_color, grass_rect)
 
 
     def game_over(self):
