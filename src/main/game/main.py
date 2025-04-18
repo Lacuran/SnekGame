@@ -8,6 +8,7 @@ class Main(BaseSettingsClass):
         super().__init__()
         self.snek = Snek()
         self.fruit = Fruit()
+        self.font = self.get_base_font()
 
 
     def update(self):
@@ -19,6 +20,8 @@ class Main(BaseSettingsClass):
         self.draw_grass()
         self.snek.draw_snek()
         self.fruit.draw_fruit()
+        self.draw_score()
+
 
     def check_collision(self):
         if self.fruit.pos == self.snek.body[0]:
@@ -46,6 +49,14 @@ class Main(BaseSettingsClass):
                     if col % 2 != 0:
                         grass_rect = self.get_base_pygame().Rect(col * self.cell_size, row * self.cell_size, self.cell_size, self.cell_size)
                         self.get_base_pygame().draw.rect(self.screen, grass_color, grass_rect)
+
+    def draw_score(self):
+        score_text = str(len(self.snek.body) - 3)
+        score_surface = self.font.render(score_text, True, (56, 74, 12))
+        score_x = self.cell_size * self.cell_number - 60
+        score_y = self.cell_size * self.cell_number - 40
+        score_rect = score_surface.get_rect(center = (score_x, score_y))
+        self.screen.blit(score_surface, score_rect)
 
 
     def game_over(self):

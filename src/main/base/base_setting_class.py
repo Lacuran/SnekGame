@@ -40,3 +40,7 @@ class BaseSettingsClass:
     @staticmethod
     def get_base_vector2():
         return BaseWindowConfig.get_vector2()
+
+    @staticmethod
+    def get_base_font():
+        return BaseAssetsConfig.get_font()

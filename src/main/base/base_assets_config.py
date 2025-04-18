@@ -21,3 +21,7 @@ class BaseAssetsConfig(BaseWindowConfig):
 
     SNEK_BODY_HORIZONTAL = BaseWindowConfig.get_pygame().image.load('../../assets/body/body_horizontal.png').convert_alpha()
     SNEK_BODY_VERTICAL = BaseWindowConfig.get_pygame().image.load('../../assets/body/body_vertical.png').convert_alpha()
+
+    @staticmethod
+    def get_font():
+        return BaseWindowConfig.get_pygame().font.Font('../../assets/font/PoetsenOne-Regular.ttf', 25)
