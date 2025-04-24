@@ -11,7 +11,7 @@ pygame.time.set_timer(SCREEN_UPDATE, 150)
 while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
-            main_game.game_over()
+            main_game.quit_game()
         if event.type == SCREEN_UPDATE:
             main_game.update()
         if event.type == pygame.KEYDOWN:
@@ -28,7 +28,7 @@ while True:
                 if main_game.snek.direction.x != 1:
                     main_game.snek.direction = Vector2(-1, 0)
             if event.key == pygame.K_ESCAPE:
-                main_game.game_over()
+                main_game.quit_game()
 
 
     main_game.screen.fill((210,180,50))

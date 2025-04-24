@@ -1,3 +1,5 @@
+from pygame import Vector2
+
 from src.main.base.base_setting_class import BaseSettingsClass
 from src.objects.fruit import Fruit
 from src.objects.snek import Snek
@@ -68,10 +70,13 @@ class Main(BaseSettingsClass):
         self.crunch_sound.play()
 
 
-    def game_over(self):
-        print("Game Over")
+    def quit_game(self):
+        print("Quit")
         self.get_base_pygame().quit()
         self.get_base_sys().exit()
+
+    def game_over(self):
+        self.snek.reset()
 
 
 
