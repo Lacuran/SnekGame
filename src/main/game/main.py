@@ -11,7 +11,6 @@ class Main(BaseSettingsClass):
         self.font = BaseSettingsClass.get_base_font()
 
 
-
     def update(self):
         self.snek.move_snek()
         self.check_collision()
