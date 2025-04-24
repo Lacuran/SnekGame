@@ -24,4 +24,4 @@ class BaseAssetsConfig(BaseWindowConfig):
 
     @staticmethod
     def get_font():
-        return BaseWindowConfig.get_pygame().font.Font('../../assets/font/PoetsenOne-Regular.ttf', 25)
+        return BaseWindowConfig.get_pygame().font.Font('../../assets/font/PressStart2P-Regular.ttf', 45)

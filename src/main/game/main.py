@@ -8,7 +8,8 @@ class Main(BaseSettingsClass):
         super().__init__()
         self.snek = Snek()
         self.fruit = Fruit()
-        self.font = self.get_base_font()
+        self.font = BaseSettingsClass.get_base_font()
+
 
 
     def update(self):
