@@ -9,6 +9,7 @@ class Main(BaseSettingsClass):
         self.snek = Snek()
         self.fruit = Fruit()
         self.font = BaseSettingsClass.get_base_font()
+        self.crunch_sound = BaseSettingsClass.get_base_crunch_sound()
 
 
     def update(self):
@@ -27,6 +28,11 @@ class Main(BaseSettingsClass):
         if self.fruit.pos == self.snek.body[0]:
             self.fruit.randomize_position()
             self.snek.add_body_block()
+            self.play_crunch_sound()
+
+        for block in self.snek.body[1:]:
+            if block == self.fruit.pos:
+                self.fruit.randomize_position()
 
     def check_for_failure(self):
         if not 0 <= self.snek.body[0].x < self.cell_number or not 0 <= self.snek.body[0].y < self.cell_number:
@@ -57,6 +63,9 @@ class Main(BaseSettingsClass):
         score_y = self.cell_size * self.cell_number - 40
         score_rect = score_surface.get_rect(center = (score_x, score_y))
         self.screen.blit(score_surface, score_rect)
+
+    def play_crunch_sound(self):
+        self.crunch_sound.play()
 
 
     def game_over(self):

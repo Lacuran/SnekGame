@@ -25,3 +25,7 @@ class BaseAssetsConfig(BaseWindowConfig):
     @staticmethod
     def get_font():
         return BaseWindowConfig.get_pygame().font.Font('../../assets/font/PressStart2P-Regular.ttf', 45)
+
+    @staticmethod
+    def get_crunch_sound():
+        return BaseWindowConfig.get_pygame().mixer.Sound('../../assets/sound/crunch.wav')

@@ -44,3 +44,7 @@ class BaseSettingsClass:
     @staticmethod
     def get_base_font():
         return BaseAssetsConfig.get_font()
+
+    @staticmethod
+    def get_base_crunch_sound():
+        return BaseAssetsConfig.get_crunch_sound()
