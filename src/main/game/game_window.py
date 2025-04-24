@@ -1,10 +1,7 @@
-import os
-
 import pygame
 from pygame import Vector2
 
 from src.main.game.main import Main
-
 
 pygame.init()
 main_game = Main()
